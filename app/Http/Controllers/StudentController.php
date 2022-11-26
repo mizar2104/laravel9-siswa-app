@@ -12,7 +12,7 @@ class StudentController extends Controller
     public function index()
     {
         return view('students.index', [
-            'students' => Student::get(),
+            'students' => Student::latest()->get(),
         ]);
     }
 
@@ -26,6 +26,8 @@ class StudentController extends Controller
         $this->validate($request, [
             'name' => ['required', 'min:3'],
             'address' => ['required', 'min:10'],
+            'phone_number' => ['required', 'max:13'],
+            'class' => ['required', 'min:3'],
         ]);
 
         $student = new Student();
@@ -53,6 +55,13 @@ class StudentController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'name' => ['required', 'min:3'],
+            'address' => ['required', 'min:10'],
+            'phone_number' => ['required', 'max:13'],
+            'class' => ['required', 'min:3'],
+        ]);
+
         $student = Student::find($id);
 
         $student->name = $request->name;

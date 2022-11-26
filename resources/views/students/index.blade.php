@@ -31,7 +31,7 @@ $preTitle = "Semua Data";
                     <td>{{ $student->phone_number }}</td>
                     <td>{{ $student->class }}</td>
                     <td>
-                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="{{ route('students.edit', $student->id) }}" class="btn btn-primary">Edit</a>
                         <form action="{{ route('students.destroy', $student->id) }}" method="POST">
                             @csrf
                             @method('DELETE')
