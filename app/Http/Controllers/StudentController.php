@@ -13,4 +13,9 @@ class StudentController extends Controller
             'students' => Student::get(),
         ]);
     }
+
+    public function create()
+    {
+        return view('create');
+    }
 }
